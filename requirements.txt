@@ -3,4 +3,4 @@ numpy
 tensorflow
 gensim
 scikit-learn
-protobuf
+protobuf 3.19.5
