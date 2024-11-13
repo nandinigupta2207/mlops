@@ -5,4 +5,4 @@ scikit-learn
 protobuf
 gensim==4.1.2
 scipy==1.8.0
-numpy==1.21.5
+numpy
