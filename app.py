@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 from gensim.models import Word2Vec
+from gensim.models import KeyedVectors
 import pickle
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
