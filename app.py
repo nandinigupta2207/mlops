@@ -13,7 +13,7 @@ def load_models():
     word2vec_model = Word2Vec.load("word2vec_model.bin") 
     with open("label_encoder.pkl", "rb") as f:
         label_encoder = pickle.load(f)
-    return model, word2vec, label_encoder
+    return model, word2vec_model, label_encoder
 
 model, word2vec_model, label_encoder = load_models()
 
