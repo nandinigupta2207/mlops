@@ -21,8 +21,8 @@ def get_word2vec_vector(tokens, word2vec_model, vector_size):
     vec = np.zeros(vector_size)
     count = 0
     for token in tokens:
-        if token in word2vec_model.wv:
-            vec += word2vec_model.wv[token]
+        if token in word2vec_model.key_to_index:  # Check against word2vec key_to_index instead of wv
+            vec += word2vec_model[token]
             count += 1
     if count > 0:
         vec /= count
