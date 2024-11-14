@@ -18,16 +18,17 @@ def load_models():
 model, word2vec_model, label_encoder = load_models()
 
 # Function to get Word2Vec vector for input text
-def get_word2vec_vector(tokens, word2vec_model, vector_size):
-    vec = np.zeros(vector_size)
+def get_word2vec_vector(tokens, word2vec_model):
+    vec = np.zeros(word2vec_model.vector_size)
     count = 0
     for token in tokens:
-        if token in word2vec_model.key_to_index:  # Check against word2vec key_to_index instead of wv
-            vec += word2vec_model[token]
+        if token in word2vec_model.wv.key_to_index:  # Use wv.key_to_index to check the vocabulary
+            vec += word2vec_model.wv[token]
             count += 1
     if count > 0:
         vec /= count
     return vec
+
 
 # Streamlit App
 st.title("Vulnerability Assessment Tool")
