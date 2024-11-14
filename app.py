@@ -5,11 +5,16 @@ from gensim.models import Word2Vec
 from gensim.models import KeyedVectors
 import pickle
 from tensorflow.keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.metrics import MeanSquaredError
+
+# Load the model, ignoring the `reduction` argument
+custom_objects = {'MeanSquaredError': MeanSquaredError}
 
 # Load the models
 @st.cache(allow_output_mutation=True)
 def load_models():
-    model = load_model("vulnerability_model.h5")
+    
+    model = load_model("vulnerability_model.h5",  custom_objects=custom_objects)
     word2vec_model = Word2Vec.load("word2vec_model.bin") 
     with open("label_encoder.pkl", "rb") as f:
         label_encoder = pickle.load(f)
