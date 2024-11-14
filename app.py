@@ -9,7 +9,7 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 @st.cache(allow_output_mutation=True)
 def load_models():
     model = load_model("vulnerability_model.h5")
-    word2vec = Word2Vec.load("word2vec_model.bin")
+    word2vec_model = KeyedVectors.load("word2vec_model_only_vectors.kv") 
     with open("label_encoder.pkl", "rb") as f:
         label_encoder = pickle.load(f)
     return model, word2vec, label_encoder
