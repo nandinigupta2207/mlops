@@ -17,12 +17,11 @@ def load_models():
 
 model, word2vec_model, label_encoder = load_models()
 
-# Function to get Word2Vec vector for input text
-def get_word2vec_vector(tokens, word2vec_model):
-    vec = np.zeros(word2vec_model.vector_size)
+def get_word2vec_vector(tokens, word2vec_model, vector_size):
+    vec = np.zeros(vector_size)
     count = 0
     for token in tokens:
-        if token in word2vec_model.wv.key_to_index:  # Use wv.key_to_index to check the vocabulary
+        if token in word2vec_model.wv.key_to_index:
             vec += word2vec_model.wv[token]
             count += 1
     if count > 0:
